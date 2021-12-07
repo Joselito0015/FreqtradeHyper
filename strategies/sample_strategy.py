@@ -179,7 +179,7 @@ class SampleStrategy(IStrategy):
         :return: DataFrame with buy columns
         """
         conditions = []
-        conditions.append(qtpylib.crossed(dataframe[f'ema_21b_{self.buy_ema21.value}'], dataframe[f'ema_55b_{self.buy_ema55.value}']))
+        conditions.append(qtpylib.crossed_above(dataframe[f'ema_21b_{self.buy_ema21.value}'], dataframe[f'ema_55b_{self.buy_ema55.value}']))
 
         conditions.append(dataframe[f'ema_8b_{self.buy_ema8.value}']>dataframe[f'ema_13b_{self.buy_ema13.value}'])
         conditions.append(dataframe[f'ema_21b_{self.buy_ema21.value}']>dataframe[f'ema_55b_{self.buy_ema55.value}'])
@@ -202,10 +202,10 @@ class SampleStrategy(IStrategy):
         :return: DataFrame with sell column
         """
         conditions = []
-        conditions.append(qtpylib.crossed(dataframe[f'ema_21s_{self.sell_ema21.value}'], dataframe[f'ema_55s_{self.sell_ema55.value}']))
+        conditions.append(qtpylib.crossed_below(dataframe[f'ema_21s_{self.sell_ema21.value}'], dataframe[f'ema_55s_{self.sell_ema55.value}']))
 
-        conditions.append(dataframe[f'ema_8s_{self.sell_ema8.value}']<dataframe[f'ema_13s_{self.sell_ema13.value}'])
-        conditions.append(dataframe[f'ema_21s_{self.sell_ema21.value}']<dataframe[f'ema_55s_{self.sell_ema55.value}'])
+        conditions.append(dataframe[f'ema_8s_{self.sell_ema8.value}']<dataframe[f'ema_13s_{self.sell_ema13.value}'][-1])
+        conditions.append(dataframe[f'ema_21s_{self.sell_ema21.value}']<dataframe[f'ema_55s_{self.sell_ema55.value}'][-1])
 
         # Check that volume is not 0
         conditions.append(dataframe['volume'] > 0)
