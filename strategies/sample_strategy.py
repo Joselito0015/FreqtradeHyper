@@ -143,20 +143,20 @@ class SampleStrategy(IStrategy):
         for val in self.buy_ema8.range:
              dataframe[f'ema_8b_{val}'] = ta.EMA(dataframe, timeperiod=val)
         for val in self.buy_ema13.range:
-            	dataframe[f'ema_13b_{val}'] = ta.EMA(dataframe, timeperiod=val)
+            dataframe[f'ema_13b_{val}'] = ta.EMA(dataframe, timeperiod=val)
         for val in self.buy_ema21.range:
-            	dataframe[f'ema_21b_{val}'] = ta.EMA(dataframe, timeperiod=val)
+            dataframe[f'ema_21b_{val}'] = ta.EMA(dataframe, timeperiod=val)
         for val in self.buy_ema55.range:
-            	dataframe[f'ema_55b_{val}'] = ta.EMA(dataframe, timeperiod=val)
+            dataframe[f'ema_55b_{val}'] = ta.EMA(dataframe, timeperiod=val)
 
         for val in self.sell_ema8.range:
-        	dataframe[f'ema_8s_{val}'] = ta.EMA(dataframe, timeperiod=val)
+            dataframe[f'ema_8s_{val}'] = ta.EMA(dataframe, timeperiod=val)
         for val in self.sell_ema13.range:
-        	dataframe[f'ema_13s_{val}'] = ta.EMA(dataframe, timeperiod=val)
+            dataframe[f'ema_13s_{val}'] = ta.EMA(dataframe, timeperiod=val)
         for val in self.sell_ema21.range:
-        	dataframe[f'ema_21s_{val}'] = ta.EMA(dataframe, timeperiod=val)
+            dataframe[f'ema_21s_{val}'] = ta.EMA(dataframe, timeperiod=val)
         for val in self.sell_ema55.range:
-        	dataframe[f'ema_55s_{val}'] = ta.EMA(dataframe, timeperiod=val)
+            dataframe[f'ema_55s_{val}'] = ta.EMA(dataframe, timeperiod=val)
 
         # Retrieve best bid and best ask from the orderbook
         # ------------------------------------
