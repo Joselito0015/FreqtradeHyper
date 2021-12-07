@@ -140,14 +140,14 @@ class SampleStrategy(IStrategy):
         :return: a Dataframe with all mandatory indicators for the strategies
         """
         # EMA - Exponential Moving Average
-	for val in self.buy_ema8.range:
-        	dataframe[f'ema_8b_{val}'] = ta.EMA(dataframe, timeperiod=val)
-	for val in self.buy_ema13.range:
-        	dataframe[f'ema_13b_{val}'] = ta.EMA(dataframe, timeperiod=val)
-	for val in self.buy_ema21.range:
-        	dataframe[f'ema_21b_{val}'] = ta.EMA(dataframe, timeperiod=val)
-	for val in self.buy_ema55.range:
-        	dataframe[f'ema_55b_{val}'] = ta.EMA(dataframe, timeperiod=val)
+        for val in self.buy_ema8.range:
+             dataframe[f'ema_8b_{val}'] = ta.EMA(dataframe, timeperiod=val)
+        for val in self.buy_ema13.range:
+            	dataframe[f'ema_13b_{val}'] = ta.EMA(dataframe, timeperiod=val)
+        for val in self.buy_ema21.range:
+            	dataframe[f'ema_21b_{val}'] = ta.EMA(dataframe, timeperiod=val)
+        for val in self.buy_ema55.range:
+            	dataframe[f'ema_55b_{val}'] = ta.EMA(dataframe, timeperiod=val)
 
         for val in self.sell_ema8.range:
         	dataframe[f'ema_8s_{val}'] = ta.EMA(dataframe, timeperiod=val)
@@ -176,13 +176,13 @@ class SampleStrategy(IStrategy):
         Based on TA indicators, populates the buy signal for the given dataframe
         :param dataframe: DataFrame populated with indicators
         :param metadata: Additional information, like the currently traded pair
-        :return: DataFrame with buy column
+        :return: DataFrame with buy columns
         """
-	conditions = []
+        conditions = []
         conditions.append(qtpylib.crossed(dataframe[f'ema_21b_{self.buy_ema21.value}'], dataframe[f'ema_55b_{self.buy_ema55.value}']))
 
         conditions.append(dataframe[f'ema_8b_{self.buy_ema8.value}']>dataframe[f'ema_13b_{self.buy_ema13.value}'])
-	conditions.append(dataframe[f'ema_21b_{self.buy_ema21.value}']>dataframe[f'ema_55b_{self.buy_ema55.value}'])
+        conditions.append(dataframe[f'ema_21b_{self.buy_ema21.value}']>dataframe[f'ema_55b_{self.buy_ema55.value}'])
 
         # Check that volume is not 0
         conditions.append(dataframe['volume'] > 0)
@@ -201,7 +201,7 @@ class SampleStrategy(IStrategy):
         :param metadata: Additional information, like the currently traded pair
         :return: DataFrame with sell column
         """
-	conditions = []
+        conditions = []
         conditions.append(qtpylib.crossed(dataframe[f'ema_21s_{self.sell_ema21.value}'], dataframe[f'ema_55s_{self.sell_ema55.value}']))
 
         conditions.append(dataframe[f'ema_8s_{self.sell_ema8.value}']<dataframe[f'ema_13s_{self.sell_ema13.value}'])
