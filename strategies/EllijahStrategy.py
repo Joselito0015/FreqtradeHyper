@@ -204,7 +204,7 @@ class EllijahStrategy(IStrategy):
         conditions = []
         conditions.append(qtpylib.crossed(dataframe[f'ema_21s_{self.sell_ema21.value}'], dataframe[f'ema_55s_{self.sell_ema55.value}']))
 
-        conditions.append(dataframe[f'ema_8s_{self.sell_ema8.value}']<dataframe[f'ema_13s_{self.sell_ema13.value}'])
+        conditions.append(dataframe["f'ema_8s_{self.sell_ema8.value}'"]<dataframe[f'ema_13s_{self.sell_ema13.value}'])
         conditions.append(dataframe[f'ema_21s_{self.sell_ema21.value}']<dataframe[f'ema_55s_{self.sell_ema55.value}'])
 
         # Check that volume is not 0
