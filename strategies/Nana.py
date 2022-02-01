@@ -48,7 +48,7 @@ class NanaStrategy(IStrategy):
 
     # Optimal stoploss designed for the strategy.
     # This attribute will be overridden if the config file contains "stoploss".
-    stoploss = -0.10
+    stoploss = -0.20
 
     # Trailing stoploss
     trailing_stop = False
@@ -59,27 +59,27 @@ class NanaStrategy(IStrategy):
     # Hyperoptable parameters
     #buy_rsi = IntParameter(low=1, high=50, default=30, space='buy', optimize=True, load=True)
     #sell_rsi = IntParameter(low=50, high=100, default=70, space='sell', optimize=True, load=True)
-    buy_ema1= IntParameter(3,98,default=9)
+    buy_ema1= IntParameter(3,98,default=9,space='buy', optimize=True)
     #sell_sma20= IntParameter(5,100,default=24)
-    buy_ema2= IntParameter(5,100,default=24)
+    buy_ema2= IntParameter(5,100,default=24,space='buy', optimize=True)
     #sell_sma20= IntParameter(5,100,default=24)
     
-    fastk_period=IntParameter(4,50,default=14)
+    fastk_period=IntParameter(4,50,default=14,space='buy', optimize=True)
     slowk_period=IntParameter(4,50,default=14)
 
 
-    fastperiod=IntParameter(4,50,default=12)
-    slowperiod=IntParameter(4,50,default=26)
-    signalperiod=IntParameter(4,50,default=9)
+    fastperiod=IntParameter(4,50,default=12,space='buy', optimize=True)
+    slowperiod=IntParameter(4,50,default=26,space='buy', optimize=True)
+    signalperiod=IntParameter(4,50,default=9,space='buy', optimize=True)
 
-    rsi_period=IntParameter(4,60,default=14)
+    rsi_period=IntParameter(4,60,default=14,space='buy', optimize=True)
 
     
-    buy_rsi = IntParameter(40, 80, default=50, space="buy")
-    sell_rsi = IntParameter(20, 80, default=50, space="sell")
+    buy_rsi = IntParameter(40, 80, default=50, space="buy",optimize=True)
+    sell_rsi = IntParameter(20, 80, default=50, space="sell",optimize=True)
 
-    buy_STK = IntParameter(40, 80, default=50, space="buy")
-    sell_STK = IntParameter(20, 80, default=50, space="sell")
+    buy_STK = IntParameter(40, 80, default=50, space="buy", optimize=True)
+    sell_STK = IntParameter(20, 80, default=50, space="sell",optimize=True)
     
 
 
@@ -99,7 +99,7 @@ class NanaStrategy(IStrategy):
     ignore_roi_if_buy_signal = False
 
     # Number of candles the strategy requires before producing valid signals
-    startup_candle_count: int = 70
+    startup_candle_count: int = 150
 
     # Optional order type mapping.
     order_types = {
