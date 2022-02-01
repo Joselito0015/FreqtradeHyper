@@ -213,7 +213,7 @@ class NanaStrategy(IStrategy):
         conditions.append((dataframe[f'rsi']>self.buy_rsi.value))
         
         conditions.append((dataframe[f'slowd_{self.fastk_period.value}_{self.slowk_period.value}']>self.buy_STK.value))
-        conditions.append((dataframe[f'slowK_{self.fastk_period.value}_{self.slowk_period.value}']>self.buy_STK.value))
+        #conditions.append((dataframe[f'slowK_{self.fastk_period.value}_{self.slowk_period.value}']>self.buy_STK.value))
 
         #conditions.append(dataframe[f'macd_{self.fastperiod.value}_{self.slowperiod.value}']>dataframe[f'macdsignal_{self.signalperiod.value}'])
         conditions.append(qtpylib.crossed_above(dataframe[f'macd_{self.fastperiod.value}_{self.slowperiod.value}'],dataframe[f'macdsignal_{self.signalperiod.value}']))
@@ -243,7 +243,7 @@ class NanaStrategy(IStrategy):
         conditions.append((dataframe[f'rsi']<self.sell_rsi.value))
         
         conditions.append((dataframe[f'slowd_{self.fastk_period.value}_{self.slowk_period.value}']<self.sell_STK.value))
-        conditions.append((dataframe[f'slowK_{self.fastk_period.value}_{self.slowk_period.value}']<self.sell_STK.value))
+        #conditions.append((dataframe[f'slowK_{self.fastk_period.value}_{self.slowk_period.value}']<self.sell_STK.value))
 
         conditions.append(qtpylib.crossed_below(dataframe[f'macd_{self.fastperiod.value}_{self.slowperiod.value}'],dataframe[f'macdsignal_{self.signalperiod.value}']))
 
