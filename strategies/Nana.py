@@ -175,7 +175,7 @@ class NanaStrategy(IStrategy):
         for val in self.fastk_period.range:
             for val2 in self.slowk_period.range:
                 # Stochastic Fast
-                stoch = ta.STOCHF(dataframe, fastk_period=val, slowk_period=val2)
+                stoch = ta.STOCH(dataframe, fastk_period=val, slowk_period=val2)
                 dataframe[f'slowd_{val}_{val2}'] = stoch['slowd']
                 dataframe[f'slowk_{val}_{val2}'] = stoch['slowk']
 
